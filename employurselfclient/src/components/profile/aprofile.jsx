@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ApplicantProfile (props){
     const classes = useStyles();
-    // TODO Eigenschaften der Unternehmens (Kenntnisse)
     // zeitlimit bei Fragen
     return (
       <body>

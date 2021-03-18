@@ -21,7 +21,7 @@ export default function CompanyProfile (props){
   const history = useHistory();
   const openTask = (event) => { history.push('/questions')}
   const openChange = () => {}
-
+  // TODO Eigenschaften der Unternehmens 
   return ( 
     <body>
       <div>
@@ -29,6 +29,9 @@ export default function CompanyProfile (props){
       </div>
       <div>
         props.user.timelimit
+      <div>
+        props.user.joboffer
+      </div>
       </div>
         {props.isVisiting ? 
         <Button onClick={openTask} variant="outlined">
