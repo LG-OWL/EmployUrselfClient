@@ -25,7 +25,6 @@ export default function LoginPage(props){
         history.push("/profile");
       }        
     }
-  }
 
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword = (event) => {setInput({...input,password:event.target.value})}
