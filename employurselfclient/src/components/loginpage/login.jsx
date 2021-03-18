@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,10 +16,16 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginPage(props){
   const classes = useStyles();
   const [input, setInput] = useState({username:'',password:''})
+  const history = useHistory();
+
+
   const checkInput = (event) => { 
     if(input.username !== '' && input.password !== '')
       console.log("Test")
+    history.push('/otherPage');
   }
+
+  
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword= (event) => {setInput({...input,password:event.target.value})}
 
