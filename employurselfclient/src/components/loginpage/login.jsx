@@ -30,10 +30,6 @@ export default function LoginPage(props){
     }
   }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f17427a7bf225531545e6493504927b06d8784d
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword = (event) => {setInput({...input,password:event.target.value})}
 
