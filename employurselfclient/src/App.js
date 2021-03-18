@@ -1,11 +1,11 @@
 import './App.css';
-import LoginPage from './components/login'
+import TaskPage from './components/tasks'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LoginPage />
+        <TaskPage />
       </header>
     </div>
   );
