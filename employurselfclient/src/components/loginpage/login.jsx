@@ -15,13 +15,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginPage(props){
   const classes = useStyles();
-  const [input, setInput] = useState({email:'',password:''})
+  const [input, setInput] = useState({username:'',password:''})
   const history = useHistory();
+
+
   const checkInput = (event) => { 
-    if(input.email !== '' && input.password !== '')
-      history.push('/CompanyProfile')
+    if(input.username !== '' && input.password !== '')
+      console.log("Test")
+    history.push('/otherPage');
   }
-  const handleChangeEmail = (event) => {setInput({...input,email:event.target.value})}
+
+  
+  const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword= (event) => {setInput({...input,password:event.target.value})}
 
 
