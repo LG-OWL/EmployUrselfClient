@@ -5,13 +5,13 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
     },
-  }));
+  },
+}));
 
 export default function LoginPage(props){
   const classes = useStyles();
@@ -20,12 +20,20 @@ export default function LoginPage(props){
 
 
   const checkInput = (event) => { 
-    if(input.username !== '' && input.password !== '')
+    if(input.username !== '' && input.password !== ''){
       console.log("Test")
-    history.push('/otherPage');
+      // TODO Abfrage nötig ob Passwort richtig
+      if(true) // Abfrage was für ein Benutzer vorliegt
+        history.push('/companyProfile'); //Für Unternehmen
+      else
+        history.push('/applicantProfile'); // Für Bewerber
+    }
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f17427a7bf225531545e6493504927b06d8784d
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword = (event) => {setInput({...input,password:event.target.value})}
 
@@ -35,10 +43,12 @@ export default function LoginPage(props){
       <div>
         <TextField
           id="outline-required"
-          label="Benutzername"
+          label="E-Mail"
           variant="outlined"
           onChange = {handleChangeUsername}
         />
+      </div>
+      <div>
         <TextField
           id="outlined-password-input"
           label="Passwort"
