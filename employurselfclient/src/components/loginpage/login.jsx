@@ -20,12 +20,16 @@ export default function LoginPage(props){
 
 
   const checkInput = (event) => { 
-    if(input.username !== '' && input.password !== '')
+    if(input.username !== '' && input.password !== ''){
       console.log("Test")
-    history.push('/otherPage');
+      // TODO Abfrage nötig ob Passwort richtig
+      if(true) // Abfrage was für ein Benutzer vorliegt
+        history.push('/companyProfile'); //Für Unternehmen
+      else
+        history.push('/applicantProfile'); // Für Bewerber
+    }
   }
 
-  
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
   const handleChangePassword= (event) => {setInput({...input,password:event.target.value})}
 
@@ -37,7 +41,7 @@ export default function LoginPage(props){
           id="outline-required"
           label="E-Mail"
           variant="outlined"
-          onChange = {handleChangeEmail}
+          onChange = {handleChangeUsername}
         />
       </div>
       <div>
