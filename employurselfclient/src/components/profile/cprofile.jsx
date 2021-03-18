@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,23 +17,26 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CompanyProfile (props){
-    const classes = useStyles();
-    return (
-      <left>
-        <div className={classes.root}>
-          <Avatar src="/broken-image.jpg" className = {classes.large}></Avatar> 
-        </div>
-        <div>
-          <td>Name</td>
-        </div>
-        <div>
-          <td>E-Mail</td>
-        </div>
-        <div>
-          <td>Eigenschaften</td>
-        </div>
-      </left>
-        
+  const classes = useStyles();
+  const history = useHistory();
+  const openTask = (event) => { history.push('/questions')}
+  const openChange = () => {}
 
-    )
+  return ( 
+    <body>
+      <div>
+        props.user.name
+      </div>
+      <div>
+        props.user.timelimit
+      </div>
+        {props.isVisiting ? 
+        <Button onClick={openTask} variant="outlined">
+          Fragen beantworten
+        </Button>: 
+        <Button onClick={openChange} variant="outlined">
+          Fragen ändern 
+      </Button>}
+    </body>
+  )
 }

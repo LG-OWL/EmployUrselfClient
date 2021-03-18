@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,10 +13,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CompanyProfile (props){
     const classes = useStyles();
+    // TODO Eigenschaften der Unternehmens (Kenntnisse)
     return (
-        <div className={classes.root}>
-            <Avatar src="/broken-image.jpg" className={classes.large}/> 
+      <body>
+        <div>
+          props.user.firstname
+          props.user.lastname
         </div>
+        <div>
+          props.user.rating
+        </div>
+        <div>
+          {props.isVisiting ? null: props.user.openQuestions} 
+        </div>
+      </body>
+
 
     )
 }

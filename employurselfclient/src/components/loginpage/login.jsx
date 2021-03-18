@@ -19,16 +19,10 @@ export default function LoginPage(props){
   const history = useHistory();
 
   const checkInput = (event) => { 
-    if(input.username !== '' && input.password !== ''){
-      console.log("Test")
-      // TODO Abfrage nötig ob Passwort richtig
-      if(true){ // Abfrage was für ein Benutzer vorliegt
-        history.push('/companyProfile'); //Für Unternehmen
-        props.handleChange({isApplicant: false})
-      }
-      else{
-        history.push('/applicantProfile'); // Für Bewerber
-        props.handleChange({isApplicant: true})
+      if(input.username !== '' && input.password !== ''){
+        console.log("Test")
+        // TODO Abfrage nötig ob Passwort richtig
+        history.push("/profile");
       }        
     }
   }

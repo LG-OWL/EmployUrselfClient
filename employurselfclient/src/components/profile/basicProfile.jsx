@@ -14,9 +14,14 @@ const useStyles = makeStyles((theme) => ({
             height: theme.spacing(20),},
   }));
 
-  const checkInput = (event) => {} //neue Seite
+/*interface IBasicProfile{
+  user: any,
+  isVisiting: Boolean,
+  isApplicant: Boolean,
+  
+}*/
 
-export default function CompanyProfile (props){
+export default function BasicProfile (props){
     const classes = useStyles();
     return (
       <left>
@@ -24,19 +29,9 @@ export default function CompanyProfile (props){
           <Avatar src="/broken-image.jpg" className = {classes.large}></Avatar> 
         </div>
         <div>
-          <td>Name</td>
+          props.user.email
         </div>
-        <div>
-          <td>E-Mail</td>
-        </div>
-        <div> 
-          <td>Eigenschaften</td>
-        </div>
-        <div>
-        <Button onClick={checkInput} variant="outlined">
-          Fragen erstellen
-        </Button>
-      </div>
+          {props.isApplicant? <aprofile user = {props.user} isVisiting = {props.isVisiting} />: <cprofile user = {props.user} isVisiting = {props.isVisiting}/> } 
       </left>
     )
 }
