@@ -1,16 +1,20 @@
 import './App.css';
-import TaskPage from './components/employee/tasks'
-import LoginPage from './components/loginpage/login'
-import SearchPage from './components/search/search';
+
+import LoginPage from './components/loginpage/login';
+import cprofile from './components/companyProfile/cprofile';
+import aprofile from './components/applicantProfile/aprofile';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <LoginPage />
-        <TaskPage />
-        
-      </header>
+    <div className="App-header">
+      <Router>
+      <Route exact path="/" component={LoginPage}></Route>
+      <Route path="/companyProfile" component={cprofile}></Route>
+      <Route path="/applicantProfile" component = {aprofile} ></Route>
+    
+      </Router>
     </div>
   );
 }

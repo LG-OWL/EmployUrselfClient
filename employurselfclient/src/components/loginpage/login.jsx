@@ -2,25 +2,36 @@ import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
     },
-  }));
+  },
+}));
 
 export default function LoginPage(props){
   const classes = useStyles();
   const [input, setInput] = useState({username:'',password:''})
+  const history = useHistory();
+
+
   const checkInput = (event) => { 
-    if(input.username !== '' && input.password !== '')
+    if(input.username !== '' && input.password !== ''){
       console.log("Test")
+      // TODO Abfrage nötig ob Passwort richtig
+      if(true) // Abfrage was für ein Benutzer vorliegt
+        history.push('/companyProfile'); //Für Unternehmen
+      else
+        history.push('/applicantProfile'); // Für Bewerber
+    }
   }
+
   const handleChangeUsername = (event) => {setInput({...input,username:event.target.value})}
-  const handleChangePassword= (event) => {setInput({...input,password:event.target.value})}
+  const handleChangePassword = (event) => {setInput({...input,password:event.target.value})}
 
 
   return(
@@ -28,10 +39,12 @@ export default function LoginPage(props){
       <div>
         <TextField
           id="outline-required"
-          label="Benutzername"
+          label="E-Mail"
           variant="outlined"
           onChange = {handleChangeUsername}
         />
+      </div>
+      <div>
         <TextField
           id="outlined-password-input"
           label="Passwort"
