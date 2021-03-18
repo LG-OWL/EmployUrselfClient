@@ -18,7 +18,6 @@ export default function LoginPage(props){
   const [input, setInput] = useState({username:'',password:''})
   const history = useHistory();
 
-
   const checkInput = (event) => { 
     if(input.username !== '' && input.password !== ''){
       console.log("Test")

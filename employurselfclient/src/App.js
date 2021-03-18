@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="App-header">
       <Router>
-      <Route exact path="/" component={LoginPage} handleChange={handleChange}></Route>
+      <Route exact path="/"
+        render={(props)=> (<LoginPage {...props}  handleChange={(changes) => handleChange(changes)}/>)}>
+      </Route>
       <Route path="/companyProfile" component={cprofile} user={user}></Route>
       <Route path="/applicantProfile" component = {aprofile} user={user}></Route>
     
