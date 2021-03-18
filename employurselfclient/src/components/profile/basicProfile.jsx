@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-
+import ApplicantProfile from aprofile;
+import CompanyProfile from cprofile;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +32,7 @@ export default function BasicProfile (props){
         <div>
           props.user.email
         </div>
-          {props.isApplicant? <aprofile user = {props.user} isVisiting = {props.isVisiting} />: <cprofile user = {props.user} isVisiting = {props.isVisiting}/> } 
+          {props.isApplicant? <ApplicantProfile user = {props.user} isVisiting = {props.isVisiting} />: <CompanyProfile user = {props.user} isVisiting = {props.isVisiting}/> } 
       </left>
     )
 }
