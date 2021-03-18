@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
             height: theme.spacing(20),},
   }));
 
-
+  const checkInput = (event) => {} //neue Seite
 
 export default function CompanyProfile (props){
     const classes = useStyles();
@@ -29,11 +29,14 @@ export default function CompanyProfile (props){
         <div>
           <td>E-Mail</td>
         </div>
-        <div>
+        <div> 
           <td>Eigenschaften</td>
         </div>
+        <div>
+        <Button onClick={checkInput} variant="outlined">
+          Fragen erstellen
+        </Button>
+      </div>
       </left>
-        
-
     )
 }
