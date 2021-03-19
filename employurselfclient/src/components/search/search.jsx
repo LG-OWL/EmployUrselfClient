@@ -1,55 +1,70 @@
-/*import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import tileData from './tileData';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+  table: {
+    minWidth: 650,
   },
-  gridList: {
-    width: 500,
-    height: 450,
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
+  
 }));
 
-/**
-export default function SearchPage() {
+export default function SearchPage(props){
+  const [anz,setAnz] = useState([]);
   const classes = useStyles();
+  const getData = () => {
+    fetch("http://localhost:8080/company/getAllCompanies",{
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        data = JSON.parse(data)
+        setAnz(data);
+        })
+  }
+  getData();
+  return(
+    /*<table className = {classes.search} style =  >
+      <tr> 
+        <th>Name</th>
+        <th>E-Mail</th>
+      </tr>
+      {anz.map((comp,index)=>(
+          <tr>
+            <td>{comp.name} </td>
+            <td>{comp.email}</td>
+          </tr>
+      ))}
+    </table>*/
 
-  return (
-    <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
-        </GridListTile>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-  );
-}*/
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Unternehmen</TableCell>
+            <TableCell align="right">E-Mail</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {anz.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
+}

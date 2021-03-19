@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import BasicProfile from './profile/basicProfile';
 import TaskPage from './employee/tasks';
+import SearchPage from './search/search'
 import ContentWrapper from './contentwrapper';
 import Sidebar from './sidebar';
 import CodingTests from './codingtest/codingtest'
@@ -26,6 +27,7 @@ export default function RouterComponent(props){
             <Route path='/applications' 
               render={(_props)=> (<CodingTests {...props}  {..._props} />)}>
             </Route>
+            <Route path = '/search' component = {SearchPage}></Route>
           </ContentWrapper>
         </Switch>        
       </Router>

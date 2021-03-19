@@ -17,10 +17,14 @@ export default function ApplicantProfile (props){
     return (
       <div>
         <div>
-          <h2>{props.user.firstname} {props.user.lastname}</h2>
+          <h3>{props.user.firstname} {props.user.lastname}</h3>
         </div>
         <div>
-          {props.user.rating}
+          <h4>Bewertungen:</h4>
+        </div>
+        <div>
+         {props.user.rating.amountRatings === 0 ? 0 : "Python " + props.user.rating[0]/props.user.rating[1] + "/5 " }
+         bei {props.user.rating[1]} Bewertungen
         </div>
         <div>
           {props.isVisiting ? null: props.user.openQuestions} 

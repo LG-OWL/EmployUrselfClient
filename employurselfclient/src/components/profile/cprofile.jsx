@@ -21,7 +21,7 @@ export default function CompanyProfile (props){
   const classes = useStyles();
   const history = useHistory();
   const openTask = (event) => { history.push('/questions')}
-  const openChange = () => {}
+  const openChange = () => {} // Ändern Fragen
   // TODO Eigenschaften der Unternehmens 
   return ( 
     <div>

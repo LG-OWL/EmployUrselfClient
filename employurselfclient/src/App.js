@@ -8,10 +8,12 @@ const useStyles = makeStyles((theme) => ({
   main: {
     width: '100%',
     height: '100%',
+    position: 'absolute'
   },
   innerMain: {
     width: '100%',
     height: '100%',
+    position: 'absolute'
   }
 }));
 
@@ -34,7 +36,7 @@ function App() {
         .then(data => {
           console.log(data)
           data = JSON.parse(data)
-          const rating = data.amountRatings === 0 ? 0 : data.rating/data.amountRatings;
+          const rating = [data.rating,data.amountRatings];
           setUser({...changes, firstname: data.firstname, lastname: data.lastname, rating: rating})
         })
     }else{

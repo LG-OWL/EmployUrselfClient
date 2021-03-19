@@ -42,7 +42,7 @@ export default function Sidebar(){
                 </Menu>
             </SidebarContent>
             <SidebarFooter>
-                <h2>©Team of EmployUrself</h2>
+                <h3>©Team of EmployUrself</h3>
             </SidebarFooter>
         </ProSidebar>
     )
