@@ -32,10 +32,9 @@ export default function Sidebar(){
                         Profil
                         <Link to="/" />
                     </MenuItem>
-                    <SubMenu title="Components" >
                     <MenuItem>
-                        <AutorenewIcon align> </AutorenewIcon>
-                        Bewerbungsprozess
+                        <PageviewIcon></PageviewIcon>
+                        Suchen
                         <Link to="/search" />
                     </MenuItem>
                     <MenuItem>
@@ -45,12 +44,6 @@ export default function Sidebar(){
                         Offene Bewerbungen
                         <Link to="/applications" />
                     </MenuItem>
-                    <MenuItem>
-                        <PageviewIcon></PageviewIcon>
-                        Billig Suchen
-                        
-                    </MenuItem>
-                    </SubMenu>
                 </Menu>
             </SidebarContent>
             <SidebarFooter>

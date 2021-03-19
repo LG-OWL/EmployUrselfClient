@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      '& > *': {
-        margin: theme.spacing(5),
-      },
+  root: {
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(5),
     },
-  }));
+  },
+}));
 
 export default function ApplicantProfile (props){
     const classes = useStyles();
