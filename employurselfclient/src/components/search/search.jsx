@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
-  search: {
-    display: 'inline-grid',
-    position: 'relative',
-    left: '50%',
-    top: '50%',
-    width: '100%',
-    transform: 'translate(-50%,-50%)',
-    '& > *': {
-      alignItems: 'center',
-      display: 'inline-block'
-    }
+  table: {
+    minWidth: 650,
   },
+  
 }));
 
 export default function SearchPage(props){
@@ -34,12 +33,38 @@ export default function SearchPage(props){
   }
   getData();
   return(
-    <div className = {classes.search} >
+    /*<table className = {classes.search} style =  >
+      <tr> 
+        <th>Name</th>
+        <th>E-Mail</th>
+      </tr>
       {anz.map((comp,index)=>(
-          <p>
-              {comp.name} {comp.email}
-          </p>
+          <tr>
+            <td>{comp.name} </td>
+            <td>{comp.email}</td>
+          </tr>
       ))}
-    </div>
+    </table>*/
+
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Unternehmen</TableCell>
+            <TableCell align="right">E-Mail</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {anz.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
