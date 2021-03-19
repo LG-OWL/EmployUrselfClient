@@ -12,8 +12,21 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2),
       },
     },
-    large: {width: theme.spacing(20),
-            height: theme.spacing(20),},
+    large: {
+      width: theme.spacing(20),
+      height: theme.spacing(20),
+    },
+    basicProfile: {
+      display: 'inline-grid',
+      position: 'relative',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%,-50%)',
+      '& > *': {
+        alignItems: 'center',
+        display: 'inline-block'
+      }
+    },
   }));
 
 /*interface IBasicProfile{
@@ -27,7 +40,7 @@ export default function BasicProfile (props){
     const classes = useStyles();
     console.log(props.user)
     return (
-      <div>
+      <div className={classes.basicProfile}>
         <div className={classes.root}>
           <Avatar src="/broken-image.jpg" className = {classes.large}></Avatar> 
         </div>

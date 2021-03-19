@@ -1,9 +1,7 @@
 import './App.css';
 import LoginPage from './components/loginpage/login';
 import React, { useState } from 'react';
-import Sidebar from './components/sidebar'
 import Router from './components/router'
-import ContentWrapper from './components/contentwrapper'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,12 +57,7 @@ function App() {
     <div className={classes.main}>
         {!user.isLoggedIn ? <LoginPage handleChange={(changes) => handleChange(changes)}/> : (
           <div className={classes.innerMain}>
-            <Sidebar />
-            <ContentWrapper>
-              <div className="App-header">
-                <Router handleChange={(changes) => handleChange(changes)} isApplicant = {user.isApplicant} user={user} />
-              </div>
-            </ContentWrapper>
+            <Router handleChange={(changes) => handleChange(changes)} isApplicant = {user.isApplicant} user={user} />
           </div>
         )}
     </div>
