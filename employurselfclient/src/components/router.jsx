@@ -4,24 +4,30 @@ import BasicProfile from './profile/basicProfile';
 import TaskPage from './employee/tasks';
 import ContentWrapper from './contentwrapper';
 import Sidebar from './sidebar';
+import CodingTests from './codingtest/codingtest'
 
 export default function RouterComponent(props){
   return(
       <Router>
         <Sidebar />
-        <ContentWrapper>
-          <Switch>
-            <Route path="/" 
-              render={(_props)=> (<BasicProfile {...props}
+        <Switch>
+          <ContentWrapper>
+            <Route exact path="/" 
+              render={(_props)=> (<BasicProfile {...props} {..._props}
               isVisiting = {false}/>)}>
             </Route>
             <Route path="/visit" 
-              render={(_props)=> (<BasicProfile {...props}  
+              render={(_props)=> (<BasicProfile {...props}  {..._props}
               isVisiting = {true}/>)}>
             </Route>
-            <Route path='/question' component = {TaskPage}></Route>
-          </Switch>
-        </ContentWrapper>
+            <Route path='/question' 
+              render={(_props)=> (<TaskPage {...props}  {..._props} />)}>
+            </Route>
+            <Route path='/applications' 
+              render={(_props)=> (<CodingTests {...props}  {..._props} />)}>
+            </Route>
+          </ContentWrapper>
+        </Switch>        
       </Router>
   )
 }

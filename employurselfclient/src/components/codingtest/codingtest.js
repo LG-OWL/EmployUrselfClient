@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function CodingTests (props){
-    const classes = useStyles();
+    console.log("DDDDD")
     let [questions, setQuestions] = useState([]);
     // TODO Frage bei welchen Unternehmen Bewerber ihm Bewerbungsprozess ist ab.
     const getQuestions = () => {
@@ -16,13 +16,11 @@ export default function CodingTests (props){
         .then(res => res.json())
         .then(data => {
             data = JSON.parse(data);
-            let questions
-            for(const question of data){
-                questions.push(question)
-            }
-            setQuestions(questions)
+            console.log(data)
+            setQuestions(data)
         })
     }
+    getQuestions();
 
     return (
         <div>

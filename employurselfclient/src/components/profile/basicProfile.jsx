@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BasicProfile (props){
     const classes = useStyles();
-    console.log(props.user)
+    
     return (
       <div className={classes.basicProfile}>
         <div className={classes.root}>
