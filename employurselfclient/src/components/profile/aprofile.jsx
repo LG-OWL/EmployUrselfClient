@@ -21,7 +21,7 @@ export default function ApplicantProfile (props){
           props.user.lastname
         </div>
         <div>
-          props.user.rating
+          props.user.rating 
         </div>
         <div>
           {props.isVisiting ? null: props.user.openQuestions} 

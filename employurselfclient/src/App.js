@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState({isApplicant: null});
-  const [applicant, setApplicant] = useState({firstname: '', lastname: '', email: ''})
+  const [applicant, setApplicant] = useState({firstname: '', lastname: '', email: '', rating: ''})
   const [company, setCompany] = useState({name: '', email: '', timeLimit: '',joboffer: ''})
   const handleChange = (changes) => {
     setUser({...user, ...changes})
