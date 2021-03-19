@@ -26,28 +26,18 @@ export default function Sidebar(){
                 <h2 align="center" >EmployUrself</h2>
             </SidebarHeader>
             <SidebarContent>
-                <Menu iconShape="square">
-                    <MenuItem > 
-                        <AccountCircleIcon align="center"></AccountCircleIcon>
+                <Menu iconShape="circle">
+                    <MenuItem icon={<AccountCircleIcon />} > 
                         Profil
                         <Link to="/" />
                     </MenuItem>
-                    <MenuItem>
-                        <AutorenewIcon align> </AutorenewIcon>
-                        Bewerbungsprozess
+                    <MenuItem icon={<AutorenewIcon />}>
+                        Suchen
                         <Link to="/search" />
                     </MenuItem>
-                    <MenuItem>
-                        <FolderOpenIcon>
-
-                        </FolderOpenIcon>
+                    <MenuItem icon={<FolderOpenIcon />}>
                         Offene Bewerbungen
                         <Link to="/applications" />
-                    </MenuItem>
-                    <MenuItem>
-                        <PageviewIcon></PageviewIcon>
-                        Billig Suchen
-                        
                     </MenuItem>
                 </Menu>
             </SidebarContent>

@@ -27,7 +27,7 @@ export default function CodingTests (props){
             {questions.map((question, index) => (
                 <div>
                     <p>{question.content}</p>
-                    <textarea></textarea>
+                    <textarea placeholder='Answer'></textarea>
                 </div>
             ))}
         </div>
