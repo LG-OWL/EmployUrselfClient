@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,15 +24,15 @@ export default function CompanyProfile (props){
   const openChange = () => {} // Ändern Fragen
   // TODO Eigenschaften der Unternehmens 
   return ( 
-    <body>
+    <div>
       <div>
-        props.user.name
+        {props.user.name}
       </div>
       <div>
-        props.user.timelimit
-      </div>
+        {props.user.timeLimit}
       <div>
-        props.user.joboffer
+        <p>Software Engineer</p>
+      </div>
       </div>
         {props.isVisiting ? 
         <Button onClick={openTask} variant="outlined">
@@ -40,6 +41,6 @@ export default function CompanyProfile (props){
         <Button onClick={openChange} variant="outlined">
           Fragen ändern 
       </Button>}
-    </body>
+    </div>
   )
 }
