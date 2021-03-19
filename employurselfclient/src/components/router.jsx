@@ -25,4 +25,3 @@ export default function RouterComponent(props){
       </Router>
   )
 }
-//<Sidebar />

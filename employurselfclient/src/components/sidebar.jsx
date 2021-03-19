@@ -26,7 +26,6 @@ export default function Sidebar(){
                         Profil
                         <Link to="/" />
                     </MenuItem>
-                    <SubMenu title="Components" >
                     <MenuItem>
                         Bewerbungsprozess
                         <Link to="/search" />
@@ -35,7 +34,6 @@ export default function Sidebar(){
                         Offene Bewerbungen
                         <Link to="/applications" />
                     </MenuItem>
-                    </SubMenu>
                 </Menu>
             </SidebarContent>
             <SidebarFooter>
