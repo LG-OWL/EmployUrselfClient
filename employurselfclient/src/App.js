@@ -1,41 +1,72 @@
 import './App.css';
 import LoginPage from './components/loginpage/login';
-import BasicProfile from './components/profile/basicProfile';
-import TaskPage from './components/employee/tasks'
-import { BrowserRouter as Router, Route} from 'react-router-dom';
 import React, { useState } from 'react';
+import Sidebar from './components/sidebar'
+import Router from './components/router'
+import ContentWrapper from './components/contentwrapper'
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+  main: {
+    width: '100%',
+    height: '100%',
+  },
+  innerMain: {
+    width: '100%',
+    height: '100%',
+  }
+}));
 
 function App() {
-  const [user, setUser] = useState({isApplicant: null});
-  const [applicant, setApplicant] = useState({firstname: '', lastname: '', email: ''})
-  const [company, setCompany] = useState({name: '', email: '', timeLimit: '',joboffer: ''})
+  let [user, setUser] = useState({isLoggedIn: false, isApplicant: null, email: null});
+  //let [applicant, setApplicant] = useState({firstname: '', lastname: '', email: ''})
+  //let [company, setCompany] = useState({name: '', email: '', timeLimit: '',joboffer: ''})
+  const classes = useStyles();
+
   const handleChange = (changes) => {
-    setUser({...user, ...changes})
     if (changes.isApplicant){
-      //TODO Schicke Anfrage um Daten zu laden
+      fetch("http://localhost:8080/applicant/getApplicant",{
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email: changes.email})
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          data = JSON.parse(data)
+          const rating = data.amountRatings === 0 ? 0 : data.rating/data.amountRatings;
+          setUser({...changes, firstname: data.firstname, lastname: data.lastname, rating: rating})
+        })
     }else{
-      //TODO Schicke Anfrage um Daten zu laden
+      fetch("http://localhost:8080/company/getCompany",{
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email: changes.email})
+      })
+        .then(res => res.json())
+        .then(data => {
+          data = JSON.parse(data)
+          setUser({...changes, name: data.name, timeLimit: data.timeLimit})
+        })
     }
   }
 
   return (
-    <div className="App-header">
-      <Router>
-        <Route exact path="/"
-          render={(props)=> (<LoginPage {...props}  handleChange={(changes) => handleChange(changes)}/>)}>
-        </Route>
-        <Route path="/profile" 
-          render={(props)=> (<BasicProfile {...props}  handleChange={(changes) => handleChange(changes)} isApplicant = {user.isApplicant}
-          user={user.isApplicant ? applicant : company} isVisiting = {false}/>)}>
-        </Route>
-        <Route path="/visit" 
-          render={(props)=> (<BasicProfile {...props}  handleChange={(changes) => handleChange(changes)} isApplicant = {user.isApplicant} 
-          user={user.isApplicant ? applicant : company} isVisiting = {true}/>)}>
-        </Route>
-        <Route path='/question' component = {TaskPage}>
-        </Route>
-      </Router>
+    <div className={classes.main}>
+        {!user.isLoggedIn ? <LoginPage handleChange={(changes) => handleChange(changes)}/> : (
+          <div className={classes.innerMain}>
+            <Sidebar />
+            <ContentWrapper>
+              <div className="App-header">
+                <Router handleChange={(changes) => handleChange(changes)} isApplicant = {user.isApplicant} user={user} />
+              </div>
+            </ContentWrapper>
+          </div>
+        )}
     </div>
   );
 }

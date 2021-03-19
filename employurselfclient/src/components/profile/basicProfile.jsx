@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import ApplicantProfile from aprofile;
-import CompanyProfile from cprofile;
+import ApplicantProfile from './aprofile';
+import CompanyProfile from './cprofile';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,15 +25,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BasicProfile (props){
     const classes = useStyles();
+    console.log(props.user)
     return (
-      <left>
+      <div>
         <div className={classes.root}>
           <Avatar src="/broken-image.jpg" className = {classes.large}></Avatar> 
         </div>
         <div>
-          props.user.email
+          {props.user.email}
         </div>
-          {props.isApplicant? <ApplicantProfile user = {props.user} isVisiting = {props.isVisiting} />: <CompanyProfile user = {props.user} isVisiting = {props.isVisiting}/> } 
-      </left>
+        {props.isApplicant? <ApplicantProfile user = {props.user} isVisiting = {props.isVisiting} />: <CompanyProfile user = {props.user} isVisiting = {props.isVisiting}/> } 
+      </div>
     )
 }
